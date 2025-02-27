@@ -1,6 +1,10 @@
-def main() :
+import sys
 
-    path = "books/frankenstein.txt"
+def main() :
+    if len(sys.argv) != 2 :
+        print(f"Usage: python3 main.py /home/charty/Projects/github.com/charti21/bookbot/frankenstein.txt")
+        sys.exit(1)
+    path = sys.argv[1]
     text = get_book_text(path)
     lower_case_text = text.lower()
     num_words = count_words(text)
@@ -9,8 +13,9 @@ def main() :
     #print(character_count_dict)
     character_list = sort_characters(character_count_dict)
     #print (character_list)
-
     # Print Report
+    
+        
    
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {path}...")
@@ -25,7 +30,7 @@ def main() :
     print("============= END ===============")
 
 def get_book_text(path) :
-    with open("books/frankenstein.txt") as f :
+    with open(path) as f :
         file_contents = f.read()
     return file_contents
 
